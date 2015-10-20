@@ -11,7 +11,6 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        
         while (TRUE) {
             // 255 unit long array of characters
             char inputChars[255];
@@ -24,6 +23,7 @@ int main(int argc, const char * argv[]) {
             
             // convert char array to an NSString object
             NSString *inputString = [NSString stringWithUTF8String:inputChars];
+            inputString = [inputString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
             
             printf("Input a number operation: ");
             // limit input to max 255 characters
@@ -36,7 +36,6 @@ int main(int argc, const char * argv[]) {
             int operationNumber = [inputNumberString intValue];
             
             switch (operationNumber) {
-                    
                 case 1:
                     //Uppercase
                     inputString = [inputString uppercaseString];
@@ -55,15 +54,12 @@ int main(int argc, const char * argv[]) {
                 }
                 case 4:{
                     //Canadianize
-                    inputString = [inputString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                     NSString *outputString = [inputString stringByAppendingString:@",Eh?"];
                     NSLog(@"%@", outputString);
                     break;
                 }
                 case 5:
                      //Respond
-                    inputString = [inputString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                    
                     if([inputString hasSuffix:@"?"]){
                         NSLog(@"I don't know");
                     }
